@@ -1,9 +1,13 @@
 ## raylib-v2
 
-**-- Windows Only --**
+**-- Windows only --**
 
 - cl (Build Tools for Visual Studio 2022)
 - gcc and clang ([WinLibs](https://winlibs.com/): POSIX threads+LLVM/Clang/LLD/LLDB+MinGW-w64 UCRT)
+
+**-- Raylib version --**
+
+[bdda186](https://github.com/raysan5/raylib/tree/bdda18656b301303b711785db48ac311655bb3d9)
 
 ### Install
 ```sh

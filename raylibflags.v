@@ -39,10 +39,6 @@ $if gcc {
 }
 
 $if clang {
-	// #flag -D_CRT_SECURE_NO_WARNINGS
-	// #flag -Wl,-SUBSYSTEM,console
-
-	// #flag -lgdi32 -lwinmm -lshell32 -lopengl32
 	#flag -lgdi32 -lwinmm -lopengl32
 
 	$if prod {

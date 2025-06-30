@@ -8,15 +8,13 @@ $if tinyc {
 	$compile_error('TCC is unsupported.')
 }
 
-#preinclude "@VMODROOT/pre.h"
+#preinclude "@VMODROOT/include/pre.h"
 
 #include "@VMODROOT/thirdparty/raylib/src/raylib.h"
 
 #flag -DPLATFORM_DESKTOP
 
 #flag -I @VMODROOT/thirdparty/raylib/src/external/glfw/include
-
-// #flag -fno-lto -l -fno-lto
 
 #flag @VMODROOT/thirdparty/raylib/src/raudio.o
 #flag @VMODROOT/thirdparty/raylib/src/rcore.o
@@ -27,24 +25,24 @@ $if tinyc {
 #flag @VMODROOT/thirdparty/raylib/src/utils.o
 #flag @VMODROOT/thirdparty/raylib/src/rglfw.o
 
-// #flag -lgdi32 -lwinmm
-// -lopengl32 -luser32 -lwinmm
-
-// #flag -I @VMODROOT/include
-
 $if msvc {
-	// #flag -L @VMODROOT/lib/windows/msvc16
-	#flag raylib.lib user32.lib shell32.lib gdi32.lib winmm.lib
+	#flag user32.lib shell32.lib gdi32.lib winmm.lib
 }
 
 $if gcc {
-	#flag -I @VMODROOT/thirdparty/raylib/src/external/glfw/deps/mingw
-	// #flag -L @VMODROOT/lib/windows/mingw-w64
-	// #flag -lraylib@START_LIBS -lgdi32 -lwinmm
 	#flag -lgdi32 -lwinmm -lopengl32
 
-	$if prod && !debug {
-		#flag -fno-lto
+	$if prod {
 		#flag -mwindows
 	}
+}
+
+$if clang {
+	#flag -D_CRT_SECURE_NO_WARNINGS
+
+	#flag -lgdi32 -lwinmm -lshell32 -lopengl32
+
+	// $if prod {
+	// 	#flag -mwindows
+	// }
 }

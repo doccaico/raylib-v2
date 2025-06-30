@@ -6,3 +6,4 @@ main
 *.dylib
 *.obj
 *.dll
+*.pdb

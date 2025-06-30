@@ -1,45 +1,50 @@
-# raylib.v for raylib v4.2.0
-![raylib.v icon](icon.png)
+## raylib-v
 
-Have a problem? raylib.v currently requires the `master` branch of V, so please run `v up` before filing any issues.
+**-- Windows Only --**
 
-Not a fork! This isn't a fork of vraylib but a wrapper built from the ground up with cross compatibility in mind.
-raylib.v is a binding for raylib in V with an aim for 100% parity with the C library.
-This probably suffices most uses for raylib at the moment, however some more advanced functionality is currently missing.
+### Install
+```sh
+$ v install --git https://github.com/doccaico/raylib-v
+```
 
-Any issues? Open a discussion.
+### Build
+```sh
+# msvc (debug)
+$ v -cc msvc run examples\core_basic_window.v
 
-## Installation
-Do `v install irishgreencitrus.raylibv`
+# msvc (release)
+$ v -cc msvc -prod -subsystem windows -cmain wWinMain run examples\core_basic_window.v
 
-## Examples
-See the `examples/` folder for some examples.
+# gcc (debug)
+$ v -cc gcc run examples\core_basic_window.v
 
-TinyCC support is still in the works!
-You may need to switch to a different compiler to compile examples.
-> For example, to run the `core_basic_window.v` example, you will need to use the command:
-> 
-> `v -cc gcc run core_basic_window.v`
-> 
-> to run using gcc, or:
-> 
-> `v -cc clang run core_basic_window.v`
-> 
-> to run using clang
+# gcc (release)
+$ v -cc gcc -prod -cflags -fno-lto -ldflags -fno-lto run examples\core_basic_window.v
+```
 
-## Roadmap
-### Priorities
-- [x] Support most common raylib.h functions
-- [ ] Support all raylib.h functions https://github.com/irishgreencitrus/raylib.v/issues/3
-- [x] Support all raylib.h types
-- [x] Support all raylib.h enums
-- [x] Add in #defines
-- [ ] Fully complete raylib.h wrapper -> v1.0.0
-### Extra tasks
-- [ ] More examples for how to use the library https://github.com/irishgreencitrus/raylib.v/issues/4
-- [ ] raymath support
-- [ ] rlgl support
-- [ ] raudio support
-- [ ] physac support
+### How to use
+```v
+module main
 
+import raylib
 
+fn main() {
+	screen_width := 800
+	screen_height := 450
+
+	raylib.init_window(screen_width, screen_height, 'raylib [core] example - basic window')
+	defer { raylib.close_window() }
+
+	raylib.set_target_fps(60)
+
+	for !raylib.window_should_close() {
+		raylib.begin_drawing()
+
+		raylib.clear_background(raylib.raywhite)
+
+		raylib.draw_text('Congrats! You created your first window!', 190, 200, 20, raylib.black)
+
+		raylib.end_drawing()
+	}
+}
+```

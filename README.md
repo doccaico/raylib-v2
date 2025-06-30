@@ -1,10 +1,13 @@
-## raylib-v
+## raylib-v2
 
 **-- Windows Only --**
 
+- cl (Build Tools for Visual Studio 2022)
+- gcc and clang ([WinLibs](https://winlibs.com/) (POSIX threads+LLVM/Clang/LLD/LLDB+MinGW-w64 UCRT)
+
 ### Install
 ```sh
-$ v install --git https://github.com/doccaico/raylib-v
+$ v install --git https://github.com/doccaico/raylib-v2
 ```
 
 ### Build
@@ -19,7 +22,13 @@ $ v -cc msvc -prod -subsystem windows -cmain wWinMain run examples\core_basic_wi
 $ v -cc gcc run examples\core_basic_window.v
 
 # gcc (release)
-$ v -cc gcc -prod -cflags -fno-lto -ldflags -fno-lto run examples\core_basic_window.v
+$ v -cc gcc -prod run examples\core_basic_window.v
+
+# clang (debug)
+$ v -cc clang run examples\core_basic_window.v
+
+# clang (release)
+$ v -cc clang -prod run examples\core_basic_window.v
 ```
 
 ### How to use

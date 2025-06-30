@@ -3,7 +3,7 @@
 **-- Windows Only --**
 
 - cl (Build Tools for Visual Studio 2022)
-- gcc and clang ([WinLibs](https://winlibs.com/) (POSIX threads+LLVM/Clang/LLD/LLDB+MinGW-w64 UCRT)
+- gcc and clang ([WinLibs](https://winlibs.com/): POSIX threads+LLVM/Clang/LLD/LLDB+MinGW-w64 UCRT)
 
 ### Install
 ```sh
